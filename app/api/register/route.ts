@@ -29,6 +29,8 @@ export async function POST(req: Request) {
     }
 
     // Ensure fields are not null or empty
+    // test
+    
     if (!username || !email || !password) {
       return NextResponse.json(
         { error: 'All fields must be filled.' },
