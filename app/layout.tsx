@@ -1,9 +1,6 @@
-// app/layout.tsx
-import '../styles/globals.css';
 import { CartProvider } from '../context/CartContent';
-import UserCartIcons from '@/components/UserCartIcon';
-import Footer from '../components/Footer';
-import Logo from '../components/Logo';
+import Footer from '../components/Layout/Footer';
+import '@/app/styles/globals.css';
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -14,8 +11,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body className="bg-accent-deepCoffee">
         <CartProvider>
-          <Logo />
-          <UserCartIcons />
           {children}
           <Footer />
         </CartProvider>
@@ -23,6 +18,5 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     </html>
   );
 }
-
 
 

@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import ProductCard from './ProductCard';
+import ProductCard from '../Product/ProductCard';
 
 const products = [
   { id: 1, name: 'Arabica Beans', flavor: 'Nutty & Caramel', price: 15, image: '/images/cpk1.jpeg' },

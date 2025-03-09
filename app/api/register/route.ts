@@ -1,60 +1,29 @@
-import { NextResponse } from 'next/server';
-import bcrypt from 'bcrypt';
-import prisma from '@/lib/prisma';  // Ensure this is correctly imported from your Prisma client
-import { z } from 'zod';
+import { NextRequest, NextResponse } from 'next/server';
+import bcrypt from 'bcryptjs';
+import prisma from '@/lib/prisma';
 
-// Define Zod schema for input validation
-const RegisterSchema = z.object({
-  username: z.string().min(3, 'Username must be at least 3 characters long'),
-  email: z.string().email('Invalid email address'),
-  password: z.string().min(6, 'Password must be at least 6 characters long'),
-});
-
-export async function POST(req: Request) {
+export async function POST(req: NextRequest) {
   try {
-    // Parse the incoming JSON payload
-    const { username, email, password } = await req.json();
+    // Ensure the request body is parsed correctly
+    const body = await req.text();
+    const { username, email, password } = JSON.parse(body);
 
-    // Check if data is valid
-    console.log('Received data:', { username, email, password });
-
-    // Validate input using Zod schema
-    const parsedData = RegisterSchema.safeParse({ username, email, password });
-    if (!parsedData.success) {
-      console.error('Validation failed:', parsedData.error.format());
-      return NextResponse.json(
-        { error: 'Invalid input data', details: parsedData.error.format() },
-        { status: 400 }
-      );
-    }
-
-    // Ensure fields are not null or empty
-    // test
-    
+    // Check for missing fields
     if (!username || !email || !password) {
-      return NextResponse.json(
-        { error: 'All fields must be filled.' },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: 'All fields are required' }, { status: 400 });
     }
 
     // Check if user already exists
-    const existingUser = await prisma.user.findUnique({
-      where: { email },
-    });
-
+    const existingUser = await prisma.user.findUnique({ where: { email } });
     if (existingUser) {
-      return NextResponse.json(
-        { error: 'Email already in use' },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: 'User already exists' }, { status: 409 });
     }
 
-    // Hash password with bcrypt
+    // Hash password
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    // Create the user in the database
-    const newUser = await prisma.user.create({
+    // Create new user
+    const user = await prisma.user.create({
       data: {
         username,
         email,
@@ -62,25 +31,53 @@ export async function POST(req: Request) {
       },
     });
 
-    return NextResponse.json(
-      { message: 'User successfully registered', user: newUser },
-      { status: 201 }
-    );
-  } catch (error) {
-    // Log detailed error message to help debug
-    if (error instanceof Error) {
-      console.error('Error during registration:', error.message);
-      console.error('Stack trace:', error.stack);
-      return NextResponse.json(
-        { error: error.message, stack: error.stack },
-        { status: 500 }
-      );
-    }
+    return NextResponse.json({ message: 'User registered successfully', user }, { status: 201 });
 
-    console.error('Unexpected error during registration:', error);
-    return NextResponse.json(
-      { error: 'An unexpected error occurred.' },
-      { status: 500 }
-    );
+  } catch (error) {
+    console.error('Registration error:', error);
+    return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }
 }
+
+
+
+// import { NextRequest, NextResponse } from 'next/server';
+// import bcrypt from 'bcryptjs';
+// import prisma from '@/lib/prisma';
+
+// export async function POST(req: NextRequest) {
+//   try {
+//     const { username, email, password } = await req.json();
+
+//     // Check for missing fields
+//     if (!username || !email || !password) {
+//       return NextResponse.json({ error: 'All fields are required' }, { status: 400 });
+//     }
+
+//     // Check if user already exists
+//     const existingUser = await prisma.user.findUnique({ where: { email } });
+//     if (existingUser) {
+//       return NextResponse.json({ error: 'User already exists' }, { status: 409 });
+//     }
+
+//     // Hash password
+//     const hashedPassword = await bcrypt.hash(password, 10);
+
+//     // Create new user
+//     const user = await prisma.user.create({
+//       data: {
+//         username,
+//         email,
+//         password: hashedPassword,
+//       },
+//     });
+
+//     return NextResponse.json({ message: 'User registered successfully', user }, { status: 201 });
+
+//   } catch (error) {
+//     console.error('Registration error:', error);
+//     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
+//   }
+// }
+
+

@@ -4,7 +4,7 @@
 import React from 'react';
 import { useCart } from '@/context/CartContent';
 import { X, Trash } from 'lucide-react';
-import CheckoutButton from './CheckoutButton';
+import CheckoutButton from '../Buttons/CheckoutButton';
 
 type CartModalProps = {
   onClose: () => void;

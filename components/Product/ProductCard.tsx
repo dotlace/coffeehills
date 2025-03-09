@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import { useCart } from '@/context/CartContent';
-import CardButton from './CardButton';
+import CardButton from '../Buttons/CardButton';
 
 type Product = {
   id: number;

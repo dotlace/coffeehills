@@ -2,8 +2,8 @@
 'use client';
 
 import React, { useState } from 'react';
-import MessageSentButton from '../components/MessageSentButton';
-import Loading from '../components/Loading'; // Import the Loading component
+import MessageSentButton from '../Buttons/MessageSentButton';
+import Loading from '../UI/Loading'; // Import the Loading component
 
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState({

@@ -1,27 +1,28 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
-import Navigation from '../components/Navigation';
-import Hero from '@/components/Hero';
-import About from '@/components/About';
-import Products from '@/components/Products';
-import Sustainability from '@/components/Sustainability';
-import Contact from '@/components/Contact';
+import React, { useLayoutEffect, useState } from 'react';
+import Navigation from '@/components/Layout/Navigation';
+import Hero from '@/components/Pages/Hero';
+import About from '@/components/Pages/About';
+import Products from '@/components/Pages/Products';
+import Sustainability from '@/components/Pages/Sustainability';
+import Contact from '@/components/Pages/Contact';
+import UserCartIcons from '@/components/Cart/UserCartIcon';
+import Logo from '@/components/Layout/Logo';
 
 const sections = ['home', 'about', 'products', 'sustainability', 'contact'];
 
 export default function HomePage() {
   const [activeSection, setActiveSection] = useState('home');
 
-  // Scroll to Hero section on first render
-  useEffect(() => {
+  useLayoutEffect(() => {
     const heroSection = document.getElementById('home');
     if (heroSection) {
-      heroSection.scrollIntoView({ behavior: 'instant' }); // Use "smooth" for animation
+      heroSection.scrollIntoView({ behavior: 'instant' });
     }
   }, []);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const handleScroll = () => {
       let current = activeSection;
       sections.forEach((sectionId) => {
@@ -43,6 +44,9 @@ export default function HomePage() {
 
   return (
     <div>
+      {/* Move client-side components inside `page.tsx` */}
+      <Logo />
+      <UserCartIcons />
       <Navigation activeSection={activeSection} />
       <Hero />
       <About />
@@ -52,4 +56,5 @@ export default function HomePage() {
     </div>
   );
 }
+
 

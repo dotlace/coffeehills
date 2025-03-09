@@ -2,7 +2,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import CheckoutOptionsModal from './CheckoutOptionsModal';
+import CheckoutOptionsModal from '../Modals/CheckoutOptionsModal';
 
 const CheckoutButton: React.FC = () => {
   const [openOptions, setOpenOptions] = useState(false);

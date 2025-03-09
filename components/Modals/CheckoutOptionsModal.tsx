@@ -4,7 +4,7 @@
 import React, { useState } from 'react';
 import { X } from 'lucide-react';
 import { useRouter } from 'next/navigation';
-import LoginRegister from './LoginRegister';
+import LoginRegister from '../Auth/LoginRegister';
 
 type CheckoutOptionsModalProps = {
   onClose: () => void;

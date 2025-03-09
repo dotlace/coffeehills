@@ -1,4 +1,7 @@
 // components/MessageSentButton.tsx
+
+'use client';
+
 import React, { useState } from 'react';
 
 interface MessageSentButtonProps {

@@ -9,11 +9,16 @@ const config: Config = {
         accent: {
           brown: '#5C4033',
           darkGreen: '#2F4F4F',
+          magic: '#2F2C28',
           beige: '#E3D5C1',
           olive: '#A3A380',
           deepCoffee: '#3E2723',
           softGreen: '#abb6a0',
           stone: '#565549',
+          bourbon: '#b07946',
+          rodeo: '#C8A27C',
+          ghost: '#C0C0C5',
+
         },
       },
     },

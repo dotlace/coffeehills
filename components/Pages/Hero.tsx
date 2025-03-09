@@ -1,4 +1,7 @@
 // components/hero.tsx
+
+'use client'; 
+
 import React, { useState, useEffect } from 'react';
 
 const Hero: React.FC = () => {

@@ -1,0 +1,60 @@
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5); /* Background overlay */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: #C8A27C;
+  padding: 40px; /* Adjusted padding for smaller modal */
+  border-radius: 20px;
+  text-align: center;
+  width: 500px; /* Slightly smaller width */
+  position: relative;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Stronger shadow */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.modal-logo {
+  position: absolute; /* Position logo absolutely */
+  top: 20px; /* Adjust the space from the top */
+  left: 50%;
+  transform: translateX(-50%); /* Center logo horizontally */
+  background-color: #3e6e47; /* Square background behind the logo */
+  padding: 20px; /* Padding around the logo to form the square */
+  border-radius: 10px; /* Rounded corners for the square background */
+  width: 180px; /* Width of the square background */
+  height: 180px; /* Height of the square background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-logo img {
+  max-width: 100%; /* Make sure the logo fits inside the square */
+  height: auto;
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 35px; /* Bigger close button */
+  cursor: pointer;
+}
+
+.success-message,
+.logout-message {
+  font-size: 24px; /* Slightly smaller text size */
+  color: #E3D5C1;
+  font-weight: bold;
+  margin-top: 40px;
+}
