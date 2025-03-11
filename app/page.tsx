@@ -1,14 +1,14 @@
 'use client';
 
 import React, { useLayoutEffect, useState } from 'react';
-import Navigation from '@/components/Layout/Navigation';
-import Hero from '@/components/Pages/Hero';
-import About from '@/components/Pages/About';
-import Products from '@/components/Pages/Products';
-import Sustainability from '@/components/Pages/Sustainability';
-import Contact from '@/components/Pages/Contact';
-import UserCartIcons from '@/components/Cart/UserCartIcon';
-import Logo from '@/components/Layout/Logo';
+import Navigation from './components/Layout/Navigation';
+import Hero from './components/Pages/Hero';
+import About from './components/Pages/About';
+import Products from './components/Pages/Products';
+import Sustainability from './components/Pages/Sustainability';
+import Contact from './components/Pages/Contact';
+import UserCartIcons from './components/Cart/UserCartIcon';
+import Logo from './components/Layout/Logo';
 
 const sections = ['home', 'about', 'products', 'sustainability', 'contact'];
 

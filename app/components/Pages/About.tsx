@@ -20,7 +20,7 @@ const About: React.FC = () => {
         >
           <h2 className="text-4xl font-bold mb-4 text-accent-softGreen">Our Story</h2>
           <p className="text-lg">
-              Located in the serene hills of Pyin Oo Lwin at over 3,000 feet, our family-owned coffee farm thrives in Myanmar's Shan highlands. With rich soil and an ideal climate, we grow exceptional coffee, with Arabica beans standing out for their smooth, nuanced flavor. Blending tradition with modern techniques, we produce premium, sustainable coffee that reflects our heritage and passion.
+              Located in the serene hills of Pyin Oo Lwin at over 3,000 feet, our family-owned coffee farm thrives in Myanmar&apos;s Shan highlands. With rich soil and an ideal climate, we grow exceptional coffee, with Arabica beans standing out for their smooth, nuanced flavor. Blending tradition with modern techniques, we produce premium, sustainable coffee that reflects our heritage and passion.
           </p>
         </motion.div>
       </div>

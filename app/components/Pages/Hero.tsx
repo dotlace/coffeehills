@@ -41,7 +41,7 @@ const Hero: React.FC = () => {
       {/* Content Overlay */}
       <div className="relative h-full flex flex-col items-center justify-center">
         <h1 className="text-5xl text-white font-bold drop-shadow-lg mb-8">Welcome to Cafe Mandalay Hills </h1>
-        <h1 className="text-3xl text-white font-bold drop-shadow-lg mb-8">Organic Coffee Farm</h1>
+        <h1 className="text-3xl text-accent-ghost font-bold drop-shadow-lg mb-8">Organic Coffee Farm</h1>
 
         {/* Dot Indicators */}
         <div className="flex space-x-2">

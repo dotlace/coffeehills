@@ -31,7 +31,7 @@ const Navigation: React.FC<NavigationProps> = ({ activeSection }) => {
 
       {/* Navigation Menu */}
       <nav
-        className={`fixed top-24 left-4 bg-white/40 p-4 rounded shadow z-50 transition-transform duration-300 ${
+        className={`fixed top-28 left-4 bg-white/40 p-4 rounded shadow z-50 transition-transform duration-300 ${
           isOpen ? 'translate-x-0' : '-translate-x-full'
         } md:translate-x-0 md:block`}
       >

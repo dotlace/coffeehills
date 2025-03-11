@@ -1,5 +1,5 @@
 import { CartProvider } from '../context/CartContent';
-import Footer from '../components/Layout/Footer';
+import Footer from './components/Layout/Footer';
 import '@/app/styles/globals.css';
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
