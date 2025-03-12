@@ -57,7 +57,14 @@ export const sendAdminEmail = async (email: string, password: string) => {
   }
 };
 
-
+export interface Product {
+  id: number;
+  name: string;
+  flavor: string;
+  price: number;
+  image: string;
+  description: string;
+}
 
 
 // import nodemailer from 'nodemailer';

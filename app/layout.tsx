@@ -1,8 +1,13 @@
+'use client';
+
 import { CartProvider } from '../context/CartContent';
 import Footer from './components/Layout/Footer';
+import { usePathname } from 'next/navigation';
 import '@/app/styles/globals.css';
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
+  const pathname = usePathname();
+
   return (
     <html lang="en">
       <head>
@@ -12,11 +17,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="bg-accent-deepCoffee">
         <CartProvider>
           {children}
-          <Footer />
+          {!pathname.startsWith('/admin') && <Footer />}
         </CartProvider>
       </body>
     </html>
   );
 }
+
 
 

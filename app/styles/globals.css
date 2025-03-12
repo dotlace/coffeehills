@@ -19,3 +19,66 @@ html, body {
     box-sizing: border-box;
   }
   
+
+    /* Hide scrollbar for Chrome, Safari and Edge */
+    .scrollbar-hide::-webkit-scrollbar {
+      display: none;
+    }
+  
+    /* Hide scrollbar for Firefox */
+    .scrollbar-hide {
+      scrollbar-width: none;
+    }
+  
+    /* Additional safeguard for overflow */
+    .no-scrollbar {
+      overflow: hidden;
+    }
+
+.coffee-section {
+  max-height: 550px;
+  /* Adjust as needed */
+  padding: 20px 0;
+  /* Reduce extra spacing */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+    
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px; /* Width of the scrollbar */
+}
+
+::-webkit-scrollbar-track {
+  background: #d1d5db; /* Light mode - gray-300 */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #9ca3af; /* Light mode - gray-400 */
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #6b7280; /* Light mode - gray-500 */
+}
+
+/* Dark mode */
+.dark ::-webkit-scrollbar-track {
+  background: transparent; /* Transparent track in dark mode */
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #4b5563; /* Dark mode - gray-700 */
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #374151; /* Dark mode - gray-800 */
+}
+
+@import '@fontsource/montserrat/index.css';
+
+body {
+  font-family: 'Montserrat', sans-serif;
+}
