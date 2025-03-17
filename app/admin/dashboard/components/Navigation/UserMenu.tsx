@@ -3,8 +3,8 @@
 import { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import { User, LogOut } from 'lucide-react';
-import LogoutMsgModal from '@/app/components/Auth/LogoutMsgModal';
-import Loading from '@/app/components/UI/Loading';
+import LogoutMsgModal from '@/app/(website)/components/Auth/LogoutMsgModal';
+import Loading from '@/app/(website)/components/UI/Loading';
 
 const UserMenu = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);

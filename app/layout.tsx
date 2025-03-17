@@ -1,7 +1,7 @@
 'use client';
 
 import { CartProvider } from '../context/CartContent';
-import Footer from './components/Layout/Footer';
+import Footer from './(website)/components/Layout/Footer';
 import { usePathname } from 'next/navigation';
 import '@/app/styles/globals.css';
 
