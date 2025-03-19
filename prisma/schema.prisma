@@ -4,26 +4,27 @@ generator client {
 
 datasource db {
   provider = "mongodb"
-  url      = env("MONGO_URL") // Uses the MongoDB URL from .env file
+  url      = env("MONGO_URL") 
 }
 
 model User {
   id               String   @id @default(auto()) @map("_id") @db.ObjectId
   username         String
   email            String   @unique
-  password         String   // ✅ Stores hashed password
-  role             String   @default("customer") // "admin" or "customer"
+  password         String  
+  role             String   @default("customer") 
   createdAt        DateTime @default(now())
-  tempPasswordHash String?  // ✅ Nullable field for temporary passwords (for password reset)
+  tempPasswordHash String?  
 }
 
 model Product {
-  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  id          Int      @id @map("_id") 
   name        String
   description String
   price       Float
   stock       Int
   category    String
+  flavor      String?
   image       String
   createdAt   DateTime @default(now())
 }
