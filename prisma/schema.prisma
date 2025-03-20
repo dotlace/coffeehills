@@ -17,15 +17,24 @@ model User {
   tempPasswordHash String?  
 }
 
+model Category {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId // Add @default(auto()) and @db.ObjectId
+  name      String
+  createdAt DateTime @default(now())
+  products  Product[]
+}
+
 model Product {
-  id          Int      @id @map("_id") 
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId // Also fix this for consistency
   name        String
   description String
   price       Float
   stock       Int
-  category    String
+  categoryId  String?  @db.ObjectId // Add @db.ObjectId
+  category    Category? @relation(fields: [categoryId], references: [id])
   flavor      String?
   image       String
   createdAt   DateTime @default(now())
 }
+
 

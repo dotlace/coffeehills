@@ -1,56 +1,51 @@
 'use client';
 
-import Sidebar from './components/Navigation/Sidebar';
+import { useState } from "react";
+import Sidebar from "./components/Navigation/Sidebar";
+import ProductManagement from "./components/Products/ProductManagement";
+import ProductInventory from "./components/Products/ProductInventory";
+import OrderHistory from "./components/Products/OrderHistory";
+import Analytics from "./components/Products/Analytics";
+import Settings from "./components/Products/Setting";
 
-const AdminLayout = ({ children }: { children: React.ReactNode }) => {
+const AdminLayout = () => {
+  const [activeSection, setActiveSection] = useState<string>("dashboard");
+
+  // Render content based on activeSection
+  const renderContent = () => {
+    switch (activeSection) {
+      case "productManagement":
+        return <ProductManagement />;
+      case "productInventory":
+        return <ProductInventory />;
+      case "orderHistory":
+        return <OrderHistory />;
+      case "analytics":
+        return <Analytics />;
+      case "settings":
+        return <Settings />;
+      default:
+        return <div>Welcome to the Admin Dashboard!</div>;
+    }
+  };
+
   return (
     <div className="min-h-screen flex bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 relative">
-      {/* Header - Now blends with the sidebar */}
-      <header className="absolute top-0 left-0 w-full p-4 bg-accent-beige dark:bg-gray-800 flex justify-between items-center text-gray-900 dark:text-gray-100 
-        before:absolute before:top-0 before:left-16 before:w-[calc(100%-4rem)] before:h-full before:border-b before:border-gray-300 dark:before:border-gray-800">
-        <h1 className="text-xl font-semibold">Admin Dashboard</h1>
-      </header>
+      <Sidebar setActiveSection={setActiveSection} />
 
-      {/* Sidebar - Pushed down further using pt-20 */}
-      <Sidebar />
+      <div className="flex-1 flex flex-col">
+        <header className="absolute top-0 left-16 w-[calc(100%-4rem)] p-4 bg-accent-beige dark:bg-gray-800 flex justify-between items-center text-gray-900 dark:text-gray-100 border-b border-gray-300 dark:border-gray-800">
+          <h1>Admin Dashboard</h1>
+        </header>
 
-      {/* Main Content (Dashboard) */}
-      <div className="flex-1 flex flex-col pt-20">
-        <main className="flex-1 p-6 overflow-auto">{children}</main>
+        <main className="flex-1 pt-20 p-6 overflow-auto">
+          {renderContent()} {/* Render the content based on active section */}
+        </main>
       </div>
     </div>
   );
 };
 
 export default AdminLayout;
-
-
-// 'use client';
-
-// import Sidebar from './components/Navigation/Sidebar';
-
-
-// const AdminLayout = ({ children }: { children: React.ReactNode }) => {
-//   return (
-//     <div className="min-h-screen flex bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 relative">
-//       {/* Header - Now blends with the sidebar */}
-//       <header className="absolute top-0 left-0 w-full p-4 bg-accent-beige dark:bg-gray-800 flex justify-between items-center text-gray-900 dark:text-gray-100 
-//         before:absolute before:top-0 before:left-16 before:w-[calc(100%-4rem)] before:h-full before:border-b before:border-gray-300 dark:before:border-gray-800">
-//         <h1 className="text-xl font-semibold">Admin Dashboard</h1>
-        
-//       </header>
-
-//       {/* Sidebar - Pushed down further using pt-20 */}
-//       <Sidebar />
-
-//       {/* Main Content (Dashboard) */}
-//       <div className="flex-1 flex flex-col pt-20">
-//         <main className="flex-1 p-6 overflow-auto">{children}</main>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default AdminLayout;
 
 

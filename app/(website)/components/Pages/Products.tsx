@@ -31,8 +31,19 @@ const Products = () => {
     const fetchProducts = async () => {
       try {
         const response = await fetch("/api/product/productCard");
+  
+        // Check if the response is OK (status code 200-299)
+        if (!response.ok) {
+          throw new Error("Failed to fetch products");
+        }
+  
         const data: Product[] = await response.json();
-
+  
+        // Check if the data is valid
+        if (!data || !Array.isArray(data)) {
+          throw new Error("Invalid data format");
+        }
+  
         setProducts(
           data.map((product) => ({
             ...product,
@@ -45,8 +56,10 @@ const Products = () => {
         setLoading(false);
       }
     };
+  
     fetchProducts();
   }, []);
+  
 
   const cardsPerPage = 4;
   const totalPages = Math.ceil(products.length / cardsPerPage);

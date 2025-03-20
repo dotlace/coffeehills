@@ -5,7 +5,7 @@ import React from "react";
 
 interface DropDownMenuProps {
   items: { label: string; path?: string; onClick?: () => void }[];
-  handleClose?: () => void; // Optional closing function
+  handleClose?: () => void; 
 }
 
 const DropDownMenu: React.FC<DropDownMenuProps> = ({ items, handleClose }) => {
