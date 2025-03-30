@@ -7,11 +7,13 @@ import ProductCategoryView from "./components/Module/ProductCategoryView"; // Co
 const ProductManagement = () => {
   return (
     <div className="flex flex-col">
-      <PMNavbar /> {/* PMNavbar stays at the top */}
+      
 
-      {/* Render ProductCategoryView below PMNavbar */}
-      <div className="mt-8"> {/* Add margin-top to separate from the navbar */}
+      {/* Render ProductCategoryView immediately below PMNavbar */}
+      <div>
+        <PMNavbar />
         <ProductCategoryView />
+        
       </div>
     </div>
   );
